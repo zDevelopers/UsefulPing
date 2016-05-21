@@ -174,6 +174,7 @@ public final class Ping extends ZPlugin
         if (!isSelf)
         {
             sender.sendMessage(I.t("{green}{bold}Ping, {0}!", target.getName()));
+            sender.sendMessage("");
         }
         else if (label.equalsIgnoreCase("ping"))
         {

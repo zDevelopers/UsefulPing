@@ -1,6 +1,7 @@
 package fr.zcraft.Ping;
 
 import fr.zcraft.zlib.components.i18n.I;
+import fr.zcraft.zlib.components.i18n.I18n;
 import fr.zcraft.zlib.components.rawtext.RawText;
 import fr.zcraft.zlib.core.ZPlugin;
 import fr.zcraft.zlib.tools.PluginLogger;
@@ -40,7 +41,10 @@ public final class Ping extends ZPlugin
     @Override
     public void onEnable()
     {
+        saveDefaultConfig();
+        loadComponents(I18n.class, PingConfig.class);
 
+        I18n.setPrimaryLocale(PingConfig.LOCALE.get());
     }
 
     /**
@@ -167,7 +171,11 @@ public final class Ping extends ZPlugin
 
         sender.sendMessage(ChatColor.GRAY + "⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅");
 
-        if (label.equalsIgnoreCase("ping") && isSelf)
+        if (!isSelf)
+        {
+            sender.sendMessage(I.t("{green}{bold}Ping, {0}!", target.getName()));
+        }
+        else if (label.equalsIgnoreCase("ping"))
         {
             sender.sendMessage(I.t("{green}{bold}Pong!"));
             sender.sendMessage("");

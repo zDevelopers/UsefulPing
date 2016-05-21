@@ -1,0 +1,17 @@
+name: Ping
+version: 1.0
+main: fr.zcraft.Ping.Ping
+
+description: Useful /ping command, with lacency and TPS.
+author: Amaury Carrade
+
+commands:
+    ping:
+        description: Pong! But with latency and stuff like that.
+        aliases: [lag, latency]
+        permission: ping.ping
+
+permissions:
+    ping.ping:
+        description: Allows the usage of the /ping command.
+        default: true

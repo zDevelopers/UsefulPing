@@ -1,6 +1,6 @@
-# UsefulPing
+# UsefulPing [![Build Status](https://jenkins.carrade.eu/job/UsefulPing/badge/icon)](https://jenkins.carrade.eu/job/UsefulPing/)
 
-An useful and lightweight `/ping` command with latency and server load, for Bukkit.
+An useful and lightweight `/ping` command with latency and server load, for Bukkit. [Download link](https://jenkins.carrade.eu/job/UsefulPing/).
 
 ```
 /ping            — displays own ping

@@ -31,8 +31,8 @@ msgid "{ce}You cannot execute this command from the console."
 msgstr "{ce}Vous ne pouvez exécuter cette commande depuis la console."
 
 #: src/main/java/fr/zcraft/Ping/Ping.java:172
-msgid "{green}{bold}Ping, {0}!"
-msgstr "{green}{bold}Ping, {0} !"
+msgid "{green}{bold}{0}'s ping"
+msgstr "{green}{bold}Ping pour {0}"
 
 #: src/main/java/fr/zcraft/Ping/Ping.java:176
 msgid "{green}{bold}Pong!"
@@ -50,6 +50,11 @@ msgstr "Latence"
 msgid "The time needed to transfer data from you to the server."
 msgstr ""
 "Le temps nécessaire pour transférer des données entre vous et le serveur."
+
+#: src/main/java/fr/zcraft/Ping/Ping.java:186
+msgid "The time needed to transfer data from {0} to the server."
+msgstr ""
+"Le temps nécessaire pour transférer des données entre {0} et le serveur."
 
 #: src/main/java/fr/zcraft/Ping/Ping.java:187
 msgid "The lower the better."

@@ -169,14 +169,15 @@ public final class Ping extends ZPlugin
         final double[] tps = getServerTPS();
 
 
-        sender.sendMessage(ChatColor.GRAY + "⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅");
+        if (sender instanceof Player)
+            sender.sendMessage(ChatColor.GRAY + "⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅");
 
         if (!isSelf)
         {
-            sender.sendMessage(I.t("{green}{bold}Ping, {0}!", target.getName()));
+            sender.sendMessage(I.t("{green}{bold}{0}'s ping", target.getName()));
             sender.sendMessage("");
         }
-        else if (label.equalsIgnoreCase("ping"))
+        else if (label.toLowerCase().endsWith("ping"))
         {
             sender.sendMessage(I.t("{green}{bold}Pong!"));
             sender.sendMessage("");
@@ -186,10 +187,13 @@ public final class Ping extends ZPlugin
                         .then(I.t("Latency: "))
                         .color(ChatColor.GOLD)
                         .hover(
-                                new ItemStackBuilder(Material.DIAMOND)
+                                new ItemStackBuilder(Material.POTATO_ITEM)
                                         .title(ChatColor.BOLD + I.t("Latency"))
-                                        .longLore(ChatColor.RESET, I.t("The time needed to transfer data from you to the server."), 38)
+                                        .longLore(ChatColor.RESET, isSelf
+                                                ? I.t("The time needed to transfer data from you to the server.")
+                                                : I.t("The time needed to transfer data from {0} to the server.", target.getName()), 38)
                                         .loreLine(ChatColor.GREEN, I.t("The lower the better."))
+                                        .hideAttributes()
                                 .item()
                         )
 
@@ -202,12 +206,13 @@ public final class Ping extends ZPlugin
                         .then(I.t("Server load: "))
                         .color(ChatColor.GOLD)
                         .hover(
-                                new ItemStackBuilder(Material.DIAMOND)
+                                new ItemStackBuilder(Material.POTATO_ITEM)
                                         .title(ChatColor.BOLD + I.t("Ticks per second"))
                                         .longLore(ChatColor.RESET, I.t("The number of cycles the server executes per second. The best is 20; under 15, the server is experiencing difficulties."), 38)
                                         .longLore(ChatColor.GRAY, I.t("The three values are the average number of TPS during the last 1, 5 and 15 minutes."), 38)
                                         .loreLine(ChatColor.GREEN, I.t("The closest to 20 the better."))
-                                        .item()
+                                        .hideAttributes()
+                                .item()
                         )
 
                         .then(tps != null ? formatTPS(tps) : I.t("{gray}(unable to retrieve server load)"))
@@ -215,7 +220,8 @@ public final class Ping extends ZPlugin
                         .build()
         );
 
-        sender.sendMessage(ChatColor.GRAY + "⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅");
+        if (sender instanceof Player)
+            sender.sendMessage(ChatColor.GRAY + "⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅");
 
         return true;
     }

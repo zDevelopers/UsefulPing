@@ -1,5 +1,5 @@
 name: Ping
-version: 1.0
+version: 1.1
 main: fr.zcraft.Ping.Ping
 
 description: Useful /ping command, with lacency and TPS.
@@ -10,8 +10,14 @@ commands:
         description: Pong! But with latency and stuff like that.
         aliases: [lag, latency]
         permission: ping.ping
+    toggleping:
+        description: Displays the ping in the action bar, live-updated.
+        permission: ping.toggleping
 
 permissions:
     ping.ping:
         description: Allows the usage of the /ping command.
+        default: true
+    ping.toggleping:
+        description: Allows the usage of the /toggleping command.
         default: true

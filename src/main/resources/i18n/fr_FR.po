@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-22 00:21+0200\n"
-"PO-Revision-Date: 2016-05-22 00:21+0100\n"
+"POT-Creation-Date: 2016-05-28 02:24+0200\n"
+"PO-Revision-Date: 2016-05-28 02:25+0100\n"
 "Last-Translator: Amaury Carrade\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -18,61 +18,83 @@ msgstr ""
 "X-Generator: Poedit 1.7.5\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/main/java/fr/zcraft/Ping/Ping.java:141
-msgid "{ce}Player {0} not found."
-msgstr "{ce}Joueur {0} introuvable."
+#: src/main/java/fr/zcraft/Ping/ContinuousPingSender.java:97
+#: src/main/java/fr/zcraft/Ping/ContinuousPingSender.java:108
+#: src/main/java/fr/zcraft/Ping/ContinuousPingSender.java:134
+msgid "{gray}(unknown)"
+msgstr "{gray}(inconnue)"
 
-#: src/main/java/fr/zcraft/Ping/Ping.java:152
-msgid "{green}Pong!"
-msgstr "{green}Pong !"
-
-#: src/main/java/fr/zcraft/Ping/Ping.java:157
-msgid "{ce}You cannot execute this command from the console."
-msgstr "{ce}Vous ne pouvez exécuter cette commande depuis la console."
-
-#: src/main/java/fr/zcraft/Ping/Ping.java:172
-msgid "{green}{bold}{0}'s ping"
-msgstr "{green}{bold}Ping pour {0}"
-
-#: src/main/java/fr/zcraft/Ping/Ping.java:176
-msgid "{green}{bold}Pong!"
-msgstr "{green}{bold}Pong !"
-
-#: src/main/java/fr/zcraft/Ping/Ping.java:181
+#: src/main/java/fr/zcraft/Ping/ContinuousPingSender.java:107
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:124
 msgid "Latency: "
 msgstr "Latence : "
 
-#: src/main/java/fr/zcraft/Ping/Ping.java:185
+#: src/main/java/fr/zcraft/Ping/ContinuousPingSender.java:112
+msgid "Load: "
+msgstr "Charge : "
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:71
+msgid "{ce}Player {0} not found."
+msgstr "{ce}Joueur {0} introuvable."
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:82
+msgid "{green}Pong!"
+msgstr "{green}Pong !"
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:87
+#: src/main/java/fr/zcraft/Ping/commands/TogglePingCommand.java:51
+msgid "{ce}You cannot execute this command from the console."
+msgstr "{ce}Vous ne pouvez exécuter cette commande depuis la console."
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:103
+msgid "{green}{bold}{0}'s ping"
+msgstr "{green}{bold}Ping pour {0}"
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:109
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:118
+msgid "{green}{bold}Pong!"
+msgstr "{green}{bold}Pong !"
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:111
+msgid "(keep displayed)"
+msgstr "(maintenir affiché)"
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:113
+msgid "Click here to display your ping continuously"
+msgstr "Cliquez ici pour afficher votre ping en continu"
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:128
 msgid "Latency"
 msgstr "Latence"
 
-#: src/main/java/fr/zcraft/Ping/Ping.java:186
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:130
 msgid "The time needed to transfer data from you to the server."
 msgstr ""
 "Le temps nécessaire pour transférer des données entre vous et le serveur."
 
-#: src/main/java/fr/zcraft/Ping/Ping.java:186
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:131
+#, java-format
 msgid "The time needed to transfer data from {0} to the server."
 msgstr ""
 "Le temps nécessaire pour transférer des données entre {0} et le serveur."
 
-#: src/main/java/fr/zcraft/Ping/Ping.java:187
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:132
 msgid "The lower the better."
 msgstr "Le plus bas est le mieux."
 
-#: src/main/java/fr/zcraft/Ping/Ping.java:191
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:137
 msgid "{gray}(unable to retrieve latency)"
 msgstr "{gray}(impossible de récupérer la latence)"
 
-#: src/main/java/fr/zcraft/Ping/Ping.java:197
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:143
 msgid "Server load: "
 msgstr "Charge du serveur : "
 
-#: src/main/java/fr/zcraft/Ping/Ping.java:201
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:147
 msgid "Ticks per second"
 msgstr "Ticks par seconde"
 
-#: src/main/java/fr/zcraft/Ping/Ping.java:202
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:148
 msgid ""
 "The number of cycles the server executes per second. The best is 20; under "
 "15, the server is experiencing difficulties."
@@ -80,17 +102,33 @@ msgstr ""
 "Le nombre de cycles que le serveur exécute chaque seconde. 20 est idéal ; "
 "sous 15, le serveur a du mal à suivre."
 
-#: src/main/java/fr/zcraft/Ping/Ping.java:203
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:149
 msgid ""
 "The three values are the average number of TPS during the last 1, 5 and 15 "
 "minutes."
 msgstr ""
 "Les trois nombres sont les TPS moyens sur les 1, 5 et 15 dernières minutes."
 
-#: src/main/java/fr/zcraft/Ping/Ping.java:204
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:150
 msgid "The closest to 20 the better."
 msgstr "Le plus proche de 20 est le mieux."
 
-#: src/main/java/fr/zcraft/Ping/Ping.java:208
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:155
 msgid "{gray}(unable to retrieve server load)"
 msgstr "{gray}(impossible de récupérer la charge serveur)"
+
+#: src/main/java/fr/zcraft/Ping/commands/TogglePingCommand.java:57
+msgid "{cs}The ping will be kept in your action bar."
+msgstr "{cs}Le ping est maintenu affiché au dessus de votre inventaire."
+
+#: src/main/java/fr/zcraft/Ping/commands/TogglePingCommand.java:59
+msgid "{cst}Run {cc}/toggleping{cst} or click here to remove."
+msgstr "{cst}Utilisez {cc}/toggleping{cst} ou cliquez ici pour le retirer."
+
+#: src/main/java/fr/zcraft/Ping/commands/TogglePingCommand.java:60
+msgid "Click here to run {cc}/toggleping"
+msgstr "Cliquez ici pour exécuter {cc}/toggleping"
+
+#: src/main/java/fr/zcraft/Ping/commands/TogglePingCommand.java:66
+msgid "{cs}The ping will no longer be kept."
+msgstr "{cs}Le ping ne sera plus maintenu affiché."

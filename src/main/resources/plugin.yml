@@ -1,8 +1,9 @@
 name: Ping
-version: 1.1
+version: "1.2"
 main: fr.zcraft.Ping.Ping
+api-version: "1.13"
 
-description: Useful /ping command, with lacency and TPS.
+description: Useful /ping command, with lacency, TPS and diagnostic.
 author: Amaury Carrade
 
 commands:
@@ -11,7 +12,7 @@ commands:
         aliases: [lag, latency]
         permission: ping.ping
     toggleping:
-        description: Displays the ping in the action bar, live-updated.
+        description: Displays the ping and the server load in the action bar, live-updated, to monitor performances.
         permission: ping.toggleping
 
 permissions:

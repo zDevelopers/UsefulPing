@@ -34,11 +34,9 @@ package fr.zcraft.Ping.commands;
 import fr.zcraft.Ping.Pinger;
 import fr.zcraft.zlib.components.i18n.I;
 import fr.zcraft.zlib.components.rawtext.RawText;
-import fr.zcraft.zlib.tools.items.ItemStackBuilder;
 import fr.zcraft.zlib.tools.text.RawMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -100,13 +98,13 @@ public class PingCommand implements CommandExecutor
 
         if (!isSelf)
         {
-            sender.sendMessage(I.t("{green}{bold}{0}'s ping", target.getName()));
+            sender.sendMessage(" " + I.t("{green}{bold}{0}'s ping", target.getName()));
             sender.sendMessage("");
         }
         else if (label.toLowerCase().endsWith("ping"))
         {
             if (sender.hasPermission("ping.toggleping"))
-                RawMessage.send(sender, new RawText(I.t("{green}{bold}Pong!"))
+                RawMessage.send(sender, new RawText(" " + I.t("{green}{bold}Pong!"))
                         .then("  ")
                         .then(I.t("(keep displayed)"))
                             .color(ChatColor.GRAY)
@@ -115,23 +113,23 @@ public class PingCommand implements CommandExecutor
                         .build()
                 );
             else
-                sender.sendMessage(I.t("{green}{bold}Pong!"));
+                sender.sendMessage(" " + I.t("{green}{bold}Pong!"));
 
             sender.sendMessage("");
         }
 
-        RawMessage.send(sender, new RawText("")
+        RawMessage.send(sender, new RawText(" ")
                         .then(I.t("Latency: "))
                             .color(ChatColor.GOLD)
                             .hover(
-                                new ItemStackBuilder(Material.POTATO_ITEM)
-                                        .title(ChatColor.BOLD + I.t("Latency"))
-                                        .longLore(ChatColor.RESET, isSelf
-                                                ? I.t("The time needed to transfer data from you to the server.")
-                                                : I.t("The time needed to transfer data from {0} to the server.", target.getName()), 38)
-                                        .loreLine(ChatColor.GREEN, I.t("The lower the better."))
-                                        .hideAttributes()
-                                .item()
+                                    new RawText()
+                                    .then(I.t("Latency")).style(ChatColor.BOLD).then("\n")
+                                    .then(
+                                            isSelf
+                                                    ? I.t("The time needed to transfer data from you to the server.")
+                                                    : I.t("The time needed to transfer data from {0} to the server.", target.getName())
+                                    ).then("\n")
+                                    .then(I.t("The lower the better.")).color(ChatColor.GREEN)
                             )
 
                         .then(latency != -1 ? Pinger.formatLatency(latency) : I.t("{gray}(unable to retrieve latency)"))
@@ -139,17 +137,15 @@ public class PingCommand implements CommandExecutor
                         .build()
         );
 
-        RawMessage.send(sender, new RawText("")
+        RawMessage.send(sender, new RawText(" ")
                         .then(I.t("Server load: "))
                             .color(ChatColor.GOLD)
                             .hover(
-                                new ItemStackBuilder(Material.POTATO_ITEM)
-                                        .title(ChatColor.BOLD + I.t("Ticks per second"))
-                                        .longLore(ChatColor.RESET, I.t("The number of cycles the server executes per second. The best is 20; under 15, the server is experiencing difficulties."), 38)
-                                        .longLore(ChatColor.GRAY, I.t("The three values are the average number of TPS during the last 1, 5 and 15 minutes."), 38)
-                                        .loreLine(ChatColor.GREEN, I.t("The closest to 20 the better."))
-                                        .hideAttributes()
-                                .item()
+                                    new RawText()
+                                    .then(I.t("Ticks per second")).style(ChatColor.BOLD).then("\n")
+                                    .then(I.t("The number of cycles the server executes per second. The best is 20; under 15, the server is experiencing difficulties.")).then("\n")
+                                    .then(I.t("The three values are the average number of TPS during the last 1, 5 and 15 minutes.")).color(ChatColor.GRAY).then("\n")
+                                    .then(I.t("The closest to 20 the better.")).color(ChatColor.GREEN)
                             )
 
                         .then(tps != null ? Pinger.formatTPS(tps) : I.t("{gray}(unable to retrieve server load)"))
@@ -157,9 +153,53 @@ public class PingCommand implements CommandExecutor
                         .build()
         );
 
+        final boolean highLatency = latency > 150;
+        final boolean lowTPS = tps != null && tps[0] < 16.5;
+
+        if (highLatency || lowTPS)
+        {
+            sender.sendMessage("");
+
+            if (isSelf)
+            {
+                if (lowTPS && highLatency)
+                {
+                    sendWarning(sender, I.t("Both your latency and the server load are high."), I.t("If you are experiencing poor performances, it may come from your internet connection, the server, or both."));
+                }
+                else if (highLatency)
+                {
+                    sendWarning(sender, I.t("Your latency is high."), I.t("If you are experiencing poor performances, it probably comes from your internet connection."));
+                }
+                else
+                {
+                    sendWarning(sender, I.t("The server load is high."), I.t("If you are experiencing poor performances, it probably comes from the server."));
+                }
+            }
+            else
+            {
+                if (lowTPS && highLatency)
+                {
+                    sendWarning(sender, I.t("Both {0}'s latency and the server load are high.", target.getName()), I.t("If they are experiencing poor performances, it may come from their internet connection, the server, or both."));
+                }
+                else if (highLatency)
+                {
+                    sendWarning(sender, I.t("{0}'s latency is high.", target.getName()), I.t("If they are experiencing poor performances, it probably comes from their internet connection."));
+                }
+                else
+                {
+                    sendWarning(sender, I.t("The server load is high."), I.t("If {0} is experiencing poor performances, it probably comes from the server.", target.getName()));
+                }
+            }
+        }
+
         if (sender instanceof Player)
             sender.sendMessage(ChatColor.GRAY + "⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅ ⋅");
 
         return true;
+    }
+
+    private void sendWarning(final CommandSender receiver, final String title, final String explanation)
+    {
+        receiver.sendMessage(ChatColor.RED + " \u26A0 " + ChatColor.GRAY + ChatColor.BOLD + title + " " + ChatColor.GRAY + explanation);
     }
 }

@@ -156,7 +156,7 @@ public class PingCommand implements CommandExecutor
         final boolean highLatency = latency > 150;
         final boolean lowTPS = tps != null && tps[0] < 16.5;
 
-        if (highLatency || lowTPS)
+        if ((highLatency || lowTPS) && sender.hasPermission("ping.diagnostic"))
         {
             sender.sendMessage("");
 

@@ -1,0 +1,186 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-27 13:10+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:69
+msgid "{ce}Player {0} not found."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:80
+msgid "{green}Pong!"
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:85
+#: src/main/java/fr/zcraft/Ping/commands/TogglePingCommand.java:51
+msgid "{ce}You cannot execute this command from the console."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:101
+msgid "{green}{bold}{0}'s ping"
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:107
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:116
+msgid "{green}{bold}Pong!"
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:109
+msgid "(keep displayed)"
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:111
+msgid "Click here to display your ping continuously"
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:122
+#: src/main/java/fr/zcraft/Ping/ContinuousPingSender.java:107
+msgid "Latency: "
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:126
+msgid "Latency"
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:129
+msgid "The time needed to transfer data from you to the server."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:130
+#, java-format
+msgid "The time needed to transfer data from {0} to the server."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:132
+msgid "The lower the better."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:135
+msgid "{gray}(unable to retrieve latency)"
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:141
+msgid "Server load: "
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:145
+msgid "Ticks per second"
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:146
+msgid ""
+"The number of cycles the server executes per second. The best is 20; under "
+"15, the server is experiencing difficulties."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:147
+msgid ""
+"The three values are the average number of TPS during the last 1, 5 and 15 "
+"minutes."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:148
+msgid "The closest to 20 the better."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:151
+msgid "{gray}(unable to retrieve server load)"
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:167
+msgid "Both your latency and the server load are high."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:167
+msgid ""
+"If you are experiencing poor performances, it may come from your internet "
+"connection, the server, or both."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:171
+msgid "Your latency is high."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:171
+msgid ""
+"If you are experiencing poor performances, it probably comes from your "
+"internet connection."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:175
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:190
+msgid "The server load is high."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:175
+msgid ""
+"If you are experiencing poor performances, it probably comes from the server."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:182
+#, java-format
+msgid "Both {0}'s latency and the server load are high."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:182
+msgid ""
+"If they are experiencing poor performances, it may come from their internet "
+"connection, the server, or both."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:186
+#, java-format
+msgid "{0}'s latency is high."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:186
+msgid ""
+"If they are experiencing poor performances, it probably comes from their "
+"internet connection."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/PingCommand.java:190
+#, java-format
+msgid ""
+"If {0} is experiencing poor performances, it probably comes from the server."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/TogglePingCommand.java:57
+msgid "{cs}The ping will be kept in your action bar."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/TogglePingCommand.java:59
+msgid "{cst}Run {cc}/toggleping{cst} or click here to remove."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/TogglePingCommand.java:60
+msgid "Click here to run {cc}/toggleping"
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/commands/TogglePingCommand.java:66
+msgid "{cs}The ping will no longer be kept."
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/ContinuousPingSender.java:97
+#: src/main/java/fr/zcraft/Ping/ContinuousPingSender.java:108
+#: src/main/java/fr/zcraft/Ping/ContinuousPingSender.java:134
+msgid "{gray}(unknown)"
+msgstr ""
+
+#: src/main/java/fr/zcraft/Ping/ContinuousPingSender.java:112
+msgid "Load: "
+msgstr ""

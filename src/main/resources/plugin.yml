@@ -22,3 +22,6 @@ permissions:
     ping.toggleping:
         description: Allows the usage of the /toggleping command.
         default: true
+    ping.diagnostic:
+        description: Allows to see diagnostics in the /ping command if the latency or server load seems to be high.
+        default: true

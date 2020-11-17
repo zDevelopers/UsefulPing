@@ -31,9 +31,9 @@
  */
 package fr.zcraft.Ping;
 
-import fr.zcraft.zlib.tools.PluginLogger;
-import fr.zcraft.zlib.tools.reflection.NMSNetwork;
-import fr.zcraft.zlib.tools.reflection.Reflection;
+import fr.zcraft.quartzlib.tools.PluginLogger;
+import fr.zcraft.quartzlib.tools.reflection.NMSNetwork;
+import fr.zcraft.quartzlib.tools.reflection.Reflection;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

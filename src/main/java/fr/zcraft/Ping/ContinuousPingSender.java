@@ -31,11 +31,11 @@
  */
 package fr.zcraft.Ping;
 
-import fr.zcraft.zlib.components.i18n.I;
-import fr.zcraft.zlib.components.rawtext.RawText;
-import fr.zcraft.zlib.core.ZLibComponent;
-import fr.zcraft.zlib.tools.runners.RunTask;
-import fr.zcraft.zlib.tools.text.MessageSender;
+import fr.zcraft.quartzlib.components.i18n.I;
+import fr.zcraft.quartzlib.components.rawtext.RawText;
+import fr.zcraft.quartzlib.core.QuartzComponent;
+import fr.zcraft.quartzlib.tools.runners.RunTask;
+import fr.zcraft.quartzlib.tools.text.MessageSender;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -50,7 +50,7 @@ import java.util.Set;
 import java.util.UUID;
 
 
-public class ContinuousPingSender extends ZLibComponent implements Listener
+public class ContinuousPingSender extends QuartzComponent implements Listener
 {
     private static ContinuousPingSender instance;
 

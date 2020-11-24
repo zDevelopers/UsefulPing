@@ -18,7 +18,7 @@ on:
       - 'v*'
 
 env:
-  JAVA_VERSION: "8"
+  JAVA_VERSION: 8
 
 jobs:
   publish:
@@ -45,7 +45,7 @@ jobs:
           script: return context.repo.repo
           result-encoding: string
 
-      - name: Build ${{ steps.project-name.outputs.result }}
+      - name: "Build ${{ steps.project-name.outputs.result }}"
           id: maven-build
           run: |
             mvn -B clean install

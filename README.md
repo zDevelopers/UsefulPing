@@ -1,4 +1,4 @@
-# UsefulPing [![Build Status](https://jenkins.carrade.eu/job/UsefulPing/badge/icon)](https://jenkins.carrade.eu/job/UsefulPing/)
+# UsefulPing ![Build & Test](https://github.com/zDevelopers/UsefulPing/workflows/Build%20&%20Test/badge.svg)
 
 An useful and lightweight `/ping` command with latency and server load, for Bukkit. [Download link](https://jenkins.carrade.eu/job/UsefulPing/).
 

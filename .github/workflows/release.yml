@@ -46,17 +46,17 @@ jobs:
           result-encoding: string
 
       - name: "Build ${{ steps.project-name.outputs.result }}"
-          id: maven-build
-          run: |
-            mvn -B clean install
+        id: maven-build
+        run: |
+          mvn -B clean install
 
-            JAR_PATH=$(ls ./target/*.jar | tail -n 1)
-            JAR_NAME=$(basename $JAR_PATH)
-            echo "::set-output name=jar_path::$JAR_PATH"
-            echo "::set-output name=jar_name::$JAR_NAME"
-          env:
-            GIT_REF_NAME: ${{ github.ref }}
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JAR_PATH=$(ls ./target/*.jar | tail -n 1)
+          JAR_NAME=$(basename $JAR_PATH)
+          echo "::set-output name=jar_path::$JAR_PATH"
+          echo "::set-output name=jar_name::$JAR_NAME"
+        env:
+          GIT_REF_NAME: ${{ github.ref }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create new GitHub Release
         id: create-release

@@ -1,6 +1,6 @@
 # UsefulPing ![Build & Test](https://github.com/zDevelopers/UsefulPing/workflows/Build%20&%20Test/badge.svg)
 
-An useful and lightweight `/ping` command with latency and server load, for Bukkit. [Download link](https://jenkins.carrade.eu/job/UsefulPing/).
+An useful and lightweight `/ping` command with latency and server load, for Bukkit. [Download link](https://github.com/zDevelopers/UsefulPing/releases).
 
 ```
 /ping            — displays own ping

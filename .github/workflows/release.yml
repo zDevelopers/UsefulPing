@@ -2,8 +2,8 @@
 # To trigger, create a tag (not a release) with semantic
 # versioning (the tag must start with a v).
 #
-# git tag -a v0.2 -m "Version 0.2"
-# git push --tags
+# git tag -am "Version 0.2" v0.2
+# git push && git push --tags
 #
 # This workflow will automatically:
 # - build the project using Maven;
@@ -74,7 +74,7 @@ jobs:
           draft: true
           prerelease: false
 
-      - name: Upload GitHub Release asset
+      - name: Add ${{ steps.project-name.outputs.result }} JAR to GitHub Release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

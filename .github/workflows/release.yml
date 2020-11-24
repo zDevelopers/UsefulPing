@@ -17,6 +17,9 @@ on:
     tags:
       - 'v*'
 
+env:
+  JAVA_VERSION: "8"
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -24,10 +27,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup Java
+      - name: Set up Java ${{ env.JAVA_VERSION }}
         uses: actions/setup-java@v1
         with:
-          java-version: 8
+          java-version: ${{ env.JAVA_VERSION }}
 
       - uses: actions/cache@v2
         with:
@@ -41,6 +44,19 @@ jobs:
         with:
           script: return context.repo.repo
           result-encoding: string
+
+      - name: Build ${{ steps.project-name.outputs.result }}
+          id: maven-build
+          run: |
+            mvn -B clean install
+
+            JAR_PATH=$(ls ./target/*.jar | tail -n 1)
+            JAR_NAME=$(basename $JAR_PATH)
+            echo "::set-output name=jar_path::$JAR_PATH"
+            echo "::set-output name=jar_name::$JAR_NAME"
+          env:
+            GIT_REF_NAME: ${{ github.ref }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create new GitHub Release
         id: create-release
@@ -59,7 +75,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create-release.outputs.upload_url }}
-          asset_path: ${{ steps.maven-publish.outputs.jar_path }}
-          asset_name: ${{ steps.maven-publish.outputs.jar_name }}
+          asset_path: ${{ steps.maven-build.outputs.jar_path }}
+          asset_name: ${{ steps.maven-build.outputs.jar_name }}
           asset_content_type: application/java-archive
-

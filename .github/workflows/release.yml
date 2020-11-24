@@ -49,18 +49,13 @@ jobs:
       - name: Build ${{ steps.project-name.outputs.result }}
         id: maven-build
         run: |
-          echo ::group::Maven build
           mvn -B clean install
-          echo ::endgroup::
 
           # Maven shade keeps the unshaded JAR under target/original-vvv.jar
           # We don't want to put this unshaded JAR in the release because it wouldn't
           # work on a server.
-          JAR_PATH=$(ls ./target/*.jar | grep -vE "^[^/]+/original-" | tail -n 1)
+          JAR_PATH=$(ls ./target/*.jar | grep -vE "^./[^/]+/original-" | tail -n 1)
           JAR_NAME=$(basename $JAR_PATH)
-
-          echo $JAR_PATH
-          echo $(ls ./target/*.jar | grep -vE "^[^/]+/original-")
 
           echo "::set-output name=jar_path::$JAR_PATH"
           echo "::set-output name=jar_name::$JAR_NAME"
